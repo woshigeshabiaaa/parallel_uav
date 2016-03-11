@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="model" default="$(find hector_quadrotor_description)/urdf/quadrotor.gazebo.xacro"/>
+    <arg name="uav_number" default="1"/>
+    <arg name="time_delay" default="1"/>
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.2"/>
+
+    <group ns="uav$(arg uav_number)">
+        <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+            <arg name="name" value="uav$(arg uav_number)"/>
+            <arg name="model" value="$(arg model)"/>
+            <arg name="tf_prefix" value="uav$(arg uav_number)"/>
+            <arg name="x" value="$(arg x)"/>
+            <arg name="y" value="$(arg y)"/>
+            <arg name="z" value="$(arg z)"/>
+
+        </include>
+    </group>
+
+
+    <node pkg="parallel_uav" type="follow_uav" name="uav$(arg uav_number)_cmd" args="uav$(arg uav_number) $(arg time_delay)"
+          output="screen"/>
+
+
+</launch>

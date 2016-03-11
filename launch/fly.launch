@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="parallel_uav" type="set_cmd_vel" name="uav1_fly_node" output="screen" args="uav1"/>
+    <node pkg="parallel_uav" type="sub_tf_gen_tf" name="intermediate_frame" output="screen"
+          args="/uav1/base_link carrot 0 0 0"/>
+    <node pkg="parallel_uav" type="sub_tf_gen_vel" name="uav2_follow" output="screen" args="uav2 carrot 2" respawn="true"/>
+
+</launch>
