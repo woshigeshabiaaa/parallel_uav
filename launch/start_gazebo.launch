@@ -2,7 +2,7 @@
 
 <launch>
     <!--<arg name="world" default="/home/flyinsky/parallel/src/parallel_uav/worlds/indoor_scene.world"/>-->
-    <arg name="world" default="/home/flyinsky/parallel/src/parallel_uav/worlds/outdoor_landscape.world"/>
+    <arg name="world" default="$(find parallel_uav)/worlds/outdoor_landscape.world"/>
 
     <!--<arg name="world" default="worlds/empty.world"/>-->
     <arg name="gui" default="true"/>
